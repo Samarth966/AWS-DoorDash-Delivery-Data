@@ -6,7 +6,7 @@ def lambda_handler(event, context):
     print(event)
     bucket = event['Records'][0]['s3']['bucket']['name']
     key = event['Records'][0]['s3']['object']['key']
-
+    
     
     # Use boto3 to get the CSV file from S3
     try:
@@ -21,6 +21,8 @@ def lambda_handler(event, context):
 
         s3_client.put_object(Bucket='doordash-target-zn-processed', Key='2024-03-09-processed_input.json',Body=newjson)
         sns_client.publish(TopicArn='arn:aws:sns:us-east-1:992382369307:newtesttopic',Message='Successfully processed the daily file file name = '+key)
+
+        print("hello")
     
     except:
         print("failed")

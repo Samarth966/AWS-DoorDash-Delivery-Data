@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         s3_client.put_object(Bucket='doordash-target-zn-processed', Key='2024-03-09-processed_input.json',Body=newjson)
         sns_client.publish(TopicArn='arn:aws:sns:us-east-1:992382369307:newtesttopic',Message='Successfully processed the daily file file name = '+key)
 
-        print("hello")
+        print("test cicd feature")
     
     except:
         print("failed")
